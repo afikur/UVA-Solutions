@@ -1,28 +1,32 @@
 /*Afikur Rahman (afikur) */
 
+#include <iostream>
 #include <cstdio>
+using namespace std;
 
 int main() {
-    int T, N, K, P;
-    scanf("%d", &T);
+    int tc,i,n,k,p,bafana,shot;
 
-    for(int i = 1; i <= T ; i++) {
-        scanf("%d%d%d", &N, &K, &P);
+    cin>>tc;
 
-        if(N == P) {
-            printf("Case %d: %d\n", i, K);
-        }
-        else if (N >= (K + P)) {
-            printf("Case %d: %d\n", i, K+P);
+    for(i=1; i<=tc; i++) {
+
+        cin>>n>>k>>p;
+
+        if(p % n == 0) {
+            bafana = k;
+        } else {
+            shot = p % n;
+            shot += k;
+
+            if(shot > n) {
+                bafana = shot - n;
+            }else {
+                bafana = shot;
+            }
         }
 
-        else if((K+P) % N == 0) {
-            printf("Case %d: %d\n", i, N);
-        }
-
-        else if(N < (K+P)) {
-            printf("Case %d: %d\n", i, (K+P)%N);
-        }
+        printf("Case %d: %d\n",i,bafana);
     }
 
     return 0;
